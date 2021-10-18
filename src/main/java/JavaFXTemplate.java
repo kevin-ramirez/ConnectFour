@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;
@@ -15,11 +16,17 @@ import javafx.stage.Stage;
 
 public class JavaFXTemplate extends Application {
 
-	Button startGameBtn, exitGameBtn;
-	EventHandler<ActionEvent> closeHandler;
+	// Pic dimensions for welcomeScreen() and img1.png
+	private static final int picHeight = 500;
+	private static final int picWidth = 500;
 
-	static final int picHeight = 500;
-	static final int picWidth = 500;
+	// Game board dimensions
+	private static final int ROWS = 6;
+	private static final int COLUMNS = 7;
+
+	private Button startGameBtn, exitGameBtn;
+	private EventHandler<ActionEvent> closeHandler;
+	private GridPane gameBoard = new GridPane();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -55,7 +62,7 @@ public class JavaFXTemplate extends Application {
 	}
 
 	// Sets the welcome screen
-	public Scene welcomeScreen() {
+	private Scene welcomeScreen() {
 		BorderPane pane = new BorderPane();
 		Text welcomeScreenText = new Text();
 		welcomeScreenText.setText("Welcome! Press PLAY to play or EXIT to exit");
