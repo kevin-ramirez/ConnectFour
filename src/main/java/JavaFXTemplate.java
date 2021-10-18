@@ -64,24 +64,20 @@ public class JavaFXTemplate extends Application {
 		view.setFitHeight(picHeight);
 		view.setFitWidth(picWidth);
 		view.setPreserveRatio(true);
-		HBox box = new HBox();
-		VBox boxV = new VBox();
-		boxV.getChildren().add(welcomeScreenText);
-		box.getChildren().addAll(startGameBtn, exitGameBtn);
-		pane.setTop(boxV);
+		HBox hBox = new HBox();
+		VBox vBox = new VBox(); vBox.getChildren().add(welcomeScreenText);
+		hBox.getChildren().addAll(startGameBtn, exitGameBtn);
+		pane.setTop(vBox);
 		pane.setCenter(view);
-		pane.setBottom(box);
+		pane.setBottom(hBox);
 
-		pane.setStyle("-fx-background-color: lightsalmon;");
-		boxV.setAlignment(Pos.CENTER);
-		box.setAlignment(Pos.CENTER);
-		box.setSpacing(10);
-		box.setPadding(new Insets(15, 12, 15, 12));
-		boxV.setPadding(new Insets(15, 12, 15, 12));
+		pane.setStyle("-fx-background-color: lightsalmon;"); vBox.setAlignment(Pos.CENTER);
+		hBox.setAlignment(Pos.CENTER);
+		hBox.setSpacing(10);
+		hBox.setPadding(new Insets(15, 12, 15, 12)); vBox.setPadding(new Insets(15, 12, 15, 12));
 		startGameBtn.setMinSize(70, 25);
 		exitGameBtn.setMinSize(70,25);
 
 		return new Scene(pane, 500, 500);
 	}
-
 }
