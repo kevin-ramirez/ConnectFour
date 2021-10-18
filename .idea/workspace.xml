@@ -5,13 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5ce5abf-2226-4035-b1cd-d50602129842" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/GameButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,11 +56,22 @@
       <workItem from="1634150050475" duration="604000" />
       <workItem from="1634150675750" duration="598000" />
       <workItem from="1634317088472" duration="6341000" />
-      <workItem from="1634577548324" duration="1284000" />
+      <workItem from="1634577548324" duration="5735000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
