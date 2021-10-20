@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5ce5abf-2226-4035-b1cd-d50602129842" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +51,7 @@
       <workItem from="1634150675750" duration="598000" />
       <workItem from="1634317088472" duration="6341000" />
       <workItem from="1634577548324" duration="5735000" />
-      <workItem from="1634689887936" duration="2266000" />
+      <workItem from="1634689887936" duration="2597000" />
     </task>
     <servers />
   </component>

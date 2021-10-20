@@ -130,6 +130,8 @@ public class JavaFXTemplate extends Application {
 		whichPlayer.setText("Player One");
 		gameBoard = new GridPane();
 
+		// Create MenuBar
+
 		gameBoard.setMinWidth(300);
 		gameBoard.setMaxWidth(400);
 		addGrid(gameBoard);
