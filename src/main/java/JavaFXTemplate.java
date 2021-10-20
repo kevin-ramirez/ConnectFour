@@ -26,7 +26,7 @@ public class JavaFXTemplate extends Application {
 	private static final int COLUMNS = 7;
 
 	private Button startGameBtn, exitGameBtn;
-	private EventHandler<ActionEvent> closeHandler;
+	private EventHandler<ActionEvent> closeHandler, gameButtonHandler;
 	private GridPane gameBoard;
 	private BorderPane gamePane;
 	private Text whichPlayer;
@@ -54,6 +54,30 @@ public class JavaFXTemplate extends Application {
 			@Override
 			public void handle(ActionEvent actionEvent) {
 				System.exit(0);
+			}
+		};
+
+		gameButtonHandler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				GameButton button = (GameButton)actionEvent.getSource();
+
+				gameLog.getItems().add(whichPlayer.getText() + " Placed a piece at Cords: " + button.row + ", " + button.column);
+				System.out.println("Cords: " + button.row + ", " + button.column + " " + button.player);
+
+				GameLogic.something();
+				GameLogic.something2(gameArray);
+
+				if (whichPlayer.getText().equals("Player One")) {
+					button.player = 1;
+					button.setStyle("-fx-background-color: orange");
+					whichPlayer.setText("Player Two");
+				} else {
+					button.player = 2;
+					button.setStyle("-fx-background-color: purple");
+					whichPlayer.setText("Player One");
+				}
+
 			}
 		};
 
@@ -129,6 +153,7 @@ public class JavaFXTemplate extends Application {
 		for (int x = 0; x < COLUMNS; x++) {
 			for (int y = 0; y < ROWS; y++) {
 				GameButton button = new GameButton(x, y);
+				button.setOnAction(gameButtonHandler);
 
 				button.setMinSize(50, 50);
 				button.setStyle("-fx-background-color: transparent");
