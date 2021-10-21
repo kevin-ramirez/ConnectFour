@@ -19,6 +19,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 
+import java.util.Stack;
+
 public class JavaFXTemplate extends Application {
 
 	// Pic dimensions for welcomeScreen() and img1.png
@@ -36,6 +38,7 @@ public class JavaFXTemplate extends Application {
 	private Text whichPlayer;
 	private ListView<String> gameLog;
 	private GameButton [][] gameArray = new GameButton[ROWS][COLUMNS];
+	private Stack<GameButton> moves = new Stack<>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -66,11 +69,18 @@ public class JavaFXTemplate extends Application {
 			public void handle(ActionEvent actionEvent) {
 				GameButton button = (GameButton)actionEvent.getSource();
 
-				gameLog.getItems().add(whichPlayer.getText() + " Placed a piece at Cords: " + button.row + ", " + button.column);
-				System.out.println("Cords: " + button.row + ", " + button.column + " " + button.player);
+				// Game Logic
+				// Check if move is valid
+				if (!GameLogic.determineValidMove(button, gameArray)) {
+					gameLog.getItems().add("That was an invalid move. Try again");
+					return;
+				}
+				// Check for a win
+				// End Logic
+				button.setDisable(true);
 
-				GameLogic.something();
-				GameLogic.something2(gameArray);
+				// Edits the button on the board to the player that pressed it
+				gameLog.getItems().add(whichPlayer.getText() + " Placed a piece at Cords: " + button.row + ", " + button.column);
 
 				if (whichPlayer.getText().equals("Player One")) {
 					button.player = 1;
@@ -82,6 +92,7 @@ public class JavaFXTemplate extends Application {
 					whichPlayer.setText("Player One");
 				}
 
+				moves.push(button);
 			}
 		};
 
@@ -157,7 +168,7 @@ public class JavaFXTemplate extends Application {
 		addGrid(gameBoard);
 
 		gameLog.setEditable(true);
-		gameLog.setMaxSize(400, 200);
+		gameLog.setPrefSize(300, 200);
 		hBox.setAlignment(Pos.CENTER);
 		hBox.setSpacing(10);
 		hBox.setPadding(new Insets(15, 12, 15, 12));
@@ -181,7 +192,7 @@ public class JavaFXTemplate extends Application {
 				button.setOnAction(gameButtonHandler);
 
 				button.setMinSize(50, 50);
-				button.setStyle("-fx-background-color: transparent");
+				//button.setStyle("-fx-background-color: transparent");
 				button.setStyle("-fx-border-color: black; -fx-border-width: 2px");
 				gameArray[y][x] = button;
 				pane.add(button, x, y);

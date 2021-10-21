@@ -6,12 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="e5ce5abf-2226-4035-b1cd-d50602129842" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameLogic.java" afterDir="false" />
+>>>>>>> validMove
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameLogic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate.class" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+=======
+>>>>>>> validMove
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +80,12 @@
       <workItem from="1634150675750" duration="598000" />
       <workItem from="1634317088472" duration="6341000" />
       <workItem from="1634577548324" duration="5735000" />
-      <workItem from="1634689887936" duration="2597000" />
+      <workItem from="1634689887936" duration="3012000" />
+      <workItem from="1634754666560" duration="1925000" />
+      <workItem from="1634761094362" duration="31000" />
+      <workItem from="1634782438472" duration="636000" />
+      <workItem from="1634784608531" duration="599000" />
+      <workItem from="1634785927201" duration="1587000" />
     </task>
     <servers />
   </component>
