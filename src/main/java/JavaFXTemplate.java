@@ -14,6 +14,10 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+
 
 public class JavaFXTemplate extends Application {
 
@@ -104,7 +108,8 @@ public class JavaFXTemplate extends Application {
 		view.setFitWidth(picWidth);
 		view.setPreserveRatio(true);
 		HBox hBox = new HBox();
-		VBox vBox = new VBox(); vBox.getChildren().add(welcomeScreenText);
+		VBox vBox = new VBox();
+		vBox.getChildren().add(welcomeScreenText);
 		hBox.getChildren().addAll(startGameBtn, exitGameBtn);
 		pane.setTop(vBox);
 		pane.setCenter(view);
@@ -125,12 +130,27 @@ public class JavaFXTemplate extends Application {
 	// Creates the game play screen
 	private Scene gamePlayScreen() {
 		HBox hBox = new HBox();
+		HBox hBox1 = new HBox();
 		gameLog = new ListView<>();
 		whichPlayer = new Text();
 		whichPlayer.setText("Player One");
 		gameBoard = new GridPane();
 
 		// Create MenuBar
+		Menu gameplay = new Menu("Game Play");
+		Menu themes = new Menu("Themes");
+		Menu options = new Menu("Options");
+
+		gameplay.getItems().add(new MenuItem("Reverse Move"));
+		themes.getItems().add(new MenuItem("original theme"));
+		themes.getItems().add(new MenuItem("theme one"));
+		themes.getItems().add(new MenuItem("theme two"));
+		options.getItems().add(new MenuItem("how to play"));
+		options.getItems().add(new MenuItem("new game"));
+		options.getItems().add(new MenuItem("exit"));
+
+		MenuBar menubar = new MenuBar();
+		menubar.getMenus().addAll(gameplay, themes, options);
 
 		gameBoard.setMinWidth(300);
 		gameBoard.setMaxWidth(400);
@@ -142,9 +162,12 @@ public class JavaFXTemplate extends Application {
 		hBox.setSpacing(10);
 		hBox.setPadding(new Insets(15, 12, 15, 12));
 		hBox.getChildren().addAll(gameLog, whichPlayer);
+		hBox1.getChildren().add(menubar);
+		hBox1.setAlignment(Pos.CENTER);
 		gameBoard.setAlignment(Pos.CENTER);
 		gamePane.setCenter(gameBoard);
 		gamePane.setBottom(hBox);
+		gamePane.setTop(hBox1);
 		gamePane.setStyle("-fx-background-color: lightsalmon;");
 
 		return new Scene(gamePane, 700, 700);
