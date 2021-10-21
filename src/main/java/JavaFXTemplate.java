@@ -17,8 +17,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-
-
 import java.util.Stack;
 
 public class JavaFXTemplate extends Application {
@@ -180,6 +178,7 @@ public class JavaFXTemplate extends Application {
 		gamePane.setBottom(hBox);
 		gamePane.setTop(hBox1);
 		gamePane.setStyle("-fx-background-color: lightsalmon;");
+		gamePane.setStyle("-fx-background-image: url(img1.jpg) ");
 
 		return new Scene(gamePane, 700, 700);
 	}
@@ -192,7 +191,7 @@ public class JavaFXTemplate extends Application {
 				button.setOnAction(gameButtonHandler);
 
 				button.setMinSize(50, 50);
-				//button.setStyle("-fx-background-color: transparent");
+				button.setStyle("-fx-background-color: transparent");
 				button.setStyle("-fx-border-color: black; -fx-border-width: 2px");
 				gameArray[y][x] = button;
 				pane.add(button, x, y);
