@@ -3,8 +3,7 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -14,9 +13,7 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+
 import java.util.Stack;
 
 public class JavaFXTemplate extends Application {
@@ -29,8 +26,11 @@ public class JavaFXTemplate extends Application {
 	private static final int ROWS = 6;
 	private static final int COLUMNS = 7;
 
+	private Stage howToPlay;
+
 	private Button startGameBtn, exitGameBtn;
-	private EventHandler<ActionEvent> closeHandler, gameButtonHandler;
+	private EventHandler<ActionEvent> closeHandler, gameButtonHandler, reverseHandler,
+			orgThemeHandler, themeOneHandler, themeTwoHandler, howToPlayHandler, newGameHandler;
 	private GridPane gameBoard;
 	private BorderPane gamePane;
 	private Text whichPlayer;
@@ -55,10 +55,48 @@ public class JavaFXTemplate extends Application {
 		exitGameBtn = new Button("Exit");
 
 		// Handlers
+		orgThemeHandler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				gamePane.setStyle("-fx-background-image: url(img1.jpg) ");
+			}
+		};
+
+		themeOneHandler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				gamePane.setStyle("-fx-background-image: url(img2.jpg) ");
+			}
+		};
+
+		themeTwoHandler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				gamePane.setStyle("-fx-background-image: url(img3.jpg) ");
+			}
+		};
+
 		closeHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent actionEvent) {
 				System.exit(0);
+			}
+		};
+
+		howToPlayHandler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				howToPlayScreen().show();
+			}
+		};
+
+		newGameHandler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				whichPlayer.setText("Player One");
+				gameLog.getItems().clear();
+				gameLog.getItems().add("New Game!");
+				GameLogic.clearBoard(gameArray);
 			}
 		};
 
@@ -78,7 +116,7 @@ public class JavaFXTemplate extends Application {
 				button.setDisable(true);
 
 				// Edits the button on the board to the player that pressed it
-				gameLog.getItems().add(whichPlayer.getText() + " Placed a piece at Cords: " + button.row + ", " + button.column);
+				gameLog.getItems().add(whichPlayer.getText() + " placed a piece at cords: " + button.row + ", " + button.column);
 
 				if (whichPlayer.getText().equals("Player One")) {
 					button.player = 1;
@@ -91,6 +129,31 @@ public class JavaFXTemplate extends Application {
 				}
 
 				moves.push(button);
+			}
+		};
+
+		reverseHandler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				GameButton button;
+				if (moves.empty()) {
+					gameLog.getItems().add("You can't reverse a move if the board is empty!");
+					return;
+				}
+
+				if (whichPlayer.getText().equals("Player One")) {
+					whichPlayer.setText("Player Two");
+				} else {
+					whichPlayer.setText("Player One");
+				}
+
+				button = moves.pop();
+				gameLog.getItems().add("Player " + button.player + " reversed their move");
+				button.player = 0;
+				button.setDisable(false);
+				button.setStyle("-fx-background-color: transparent");
+				button.setStyle("-fx-border-color: black; -fx-border-width: 2px");
+
 			}
 		};
 
@@ -149,14 +212,18 @@ public class JavaFXTemplate extends Application {
 		Menu gameplay = new Menu("Game Play");
 		Menu themes = new Menu("Themes");
 		Menu options = new Menu("Options");
+		// Menu Items
+		MenuItem reverse = new MenuItem("Reverse Move");
+		MenuItem orgTheme = new MenuItem("original theme");
+		MenuItem themeOne = new MenuItem("theme one");
+		MenuItem themeTwo = new MenuItem("theme two");
+		MenuItem howToPlay = new MenuItem("how to play");
+		MenuItem newGame = new MenuItem("new game");
+		MenuItem exit = new MenuItem("exit");
 
-		gameplay.getItems().add(new MenuItem("Reverse Move"));
-		themes.getItems().add(new MenuItem("original theme"));
-		themes.getItems().add(new MenuItem("theme one"));
-		themes.getItems().add(new MenuItem("theme two"));
-		options.getItems().add(new MenuItem("how to play"));
-		options.getItems().add(new MenuItem("new game"));
-		options.getItems().add(new MenuItem("exit"));
+		gameplay.getItems().add(reverse);
+		themes.getItems().addAll(orgTheme, themeOne, themeTwo);
+		options.getItems().addAll(howToPlay, newGame, exit);
 
 		MenuBar menubar = new MenuBar();
 		menubar.getMenus().addAll(gameplay, themes, options);
@@ -174,10 +241,19 @@ public class JavaFXTemplate extends Application {
 		hBox1.getChildren().add(menubar);
 		hBox1.setAlignment(Pos.CENTER);
 		gameBoard.setAlignment(Pos.CENTER);
+
+		// Assign menubar handlers
+		reverse.setOnAction(reverseHandler);
+		orgTheme.setOnAction(orgThemeHandler);
+		themeOne.setOnAction(themeOneHandler);
+		themeTwo.setOnAction(themeTwoHandler);
+		howToPlay.setOnAction(howToPlayHandler);
+		newGame.setOnAction(newGameHandler);
+		exit.setOnAction(closeHandler);
+
 		gamePane.setCenter(gameBoard);
 		gamePane.setBottom(hBox);
 		gamePane.setTop(hBox1);
-		gamePane.setStyle("-fx-background-color: lightsalmon;");
 		gamePane.setStyle("-fx-background-image: url(img1.jpg) ");
 
 		return new Scene(gamePane, 700, 700);
@@ -200,4 +276,43 @@ public class JavaFXTemplate extends Application {
 		pane.setHgap(10);
 		pane.setVgap(10);
 	}
+
+	// Displays a screen with instructions on how to play the game
+	private Stage howToPlayScreen() {
+		howToPlay = new Stage();
+		VBox vbox = new VBox();
+		vbox.setAlignment(Pos.CENTER);
+		Button button = new Button();
+		button.setText("Thanks, now let me play!");
+		button.setOnAction(e->howToPlay.close());
+		Text text = new Text();
+		text.setText("Welcome to Connect 4!");
+
+		vbox.setSpacing(10);
+		vbox.setPadding(new Insets(15, 12, 15, 12));
+		vbox.getChildren().addAll(button, text);
+
+		BorderPane pane = new BorderPane();
+		Label label = new Label(WORDS);
+		label.setWrapText(true);
+		label.setAlignment(Pos.CENTER);
+
+		pane.setTop(vbox);
+		pane.setCenter(label);
+		pane.setStyle("-fx-background-color: lightsalmon;");
+		Scene scene = new Scene(pane, 800, 400);
+		howToPlay.setTitle("How To Play");
+		howToPlay.setScene(scene);
+
+		return howToPlay;
+	}
+
+	private static final String WORDS =
+			"This game is played by connecting 4 pieces in a row.\n" +
+			"This can be done diagonally, horizontally, or vertically.\n" +
+			"Moves are only valid when they are placed in a position that is at the bottom most column.\n" +
+			"For example, if the column chosen is empty that piece can only be placed at the bottom.\n" +
+			"If there is already a piece placed in that column then the piece currently being placed can\n" +
+			"Only be placed right above that piece.\n" +
+			"This is a 2 player game where players turns alternate. Have FUN!!!";
 }

@@ -10,4 +10,15 @@ public class GameLogic {
         return true;
     }
 
+    public static void clearBoard(GameButton[][] board) {
+        for (int x = 0; x < COLUMNS; x++) {
+            for (int y = 0; y < ROWS; y++) {
+                board[y][x].setDisable(false);
+                board[y][x].player = 0;
+                board[y][x].setStyle("-fx-background-color: transparent");
+                board[y][x].setStyle("-fx-border-color: black; -fx-border-width: 2px");
+            }
+        }
+    }
+
 }
