@@ -27,7 +27,7 @@ public class JavaFXTemplate extends Application {
 	private static final int COLUMNS = 7;
 
 	private Stage howToPlay;
-
+	private int buttonPresses;
 	private Button startGameBtn, exitGameBtn;
 	private EventHandler<ActionEvent> closeHandler, gameButtonHandler, reverseHandler,
 			orgThemeHandler, themeOneHandler, themeTwoHandler, howToPlayHandler, newGameHandler;
@@ -97,6 +97,9 @@ public class JavaFXTemplate extends Application {
 				gameLog.getItems().clear();
 				gameLog.getItems().add("New Game!");
 				GameLogic.clearBoard(gameArray);
+				moves.clear();
+				buttonPresses = 0;
+
 			}
 		};
 
@@ -129,6 +132,12 @@ public class JavaFXTemplate extends Application {
 
 				// Edits the button on the board to the player that pressed it
 				gameLog.getItems().add(whichPlayer.getText() + " placed a piece at cords: " + button.row + ", " + button.column);
+				buttonPresses++;
+
+				if (buttonPresses == 42) {
+					primaryStage.setScene(winScreen(whichPlayer.getText(), buttonPresses));
+					primaryStage.show();
+				}
 
 				if (whichPlayer.getText().equals("Player One")) {
 					button.player = 1;
@@ -166,6 +175,7 @@ public class JavaFXTemplate extends Application {
 				button.setDisable(false);
 				button.setStyle("-fx-background-color: transparent");
 				button.setStyle("-fx-border-color: black; -fx-border-width: 2px");
+				buttonPresses--;
 
 			}
 		};
@@ -180,6 +190,29 @@ public class JavaFXTemplate extends Application {
 
 		primaryStage.setScene(welcomeScreen());
 		primaryStage.show();
+	}
+
+	// Sets the game won or tie game scene
+	public Scene winScreen(String player, int buttonPresses) {
+		BorderPane pane = new BorderPane();
+		Button buttonAgain = new Button();
+		buttonAgain.setText("Play again");
+		Button exit = new Button();
+		exit.setText("Close game");
+		exit.setOnAction(closeHandler);
+		VBox vbox = new VBox();
+		vbox.setAlignment(Pos.CENTER);
+		Text text = new Text();
+		vbox.getChildren().addAll(text, buttonAgain, exit);
+		if (buttonPresses == 42) {
+			text.setText("Tie Game!");
+		} else {
+			text.setText(player + " WON!");
+		}
+		pane.setTop(text);
+		pane.setCenter(vbox);
+		pane.setStyle("-fx-background-image: url(img4.jpg) ");
+		return new Scene(pane, 500, 500);
 	}
 
 	// Sets the welcome screen
