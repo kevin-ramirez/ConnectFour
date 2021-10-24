@@ -97,6 +97,8 @@ public class JavaFXTemplate extends Application {
 				gameLog.getItems().clear();
 				gameLog.getItems().add("New Game!");
 				GameLogic.clearBoard(gameArray);
+				moves.clear();
+
 			}
 		};
 
