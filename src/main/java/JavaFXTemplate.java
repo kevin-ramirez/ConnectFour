@@ -112,6 +112,18 @@ public class JavaFXTemplate extends Application {
 					return;
 				}
 				// Check for a win
+				int player;
+				if (whichPlayer.getText().equals("Player One")) {
+					player = 1;
+				}
+				else {
+					player = 2;
+				}
+
+				if (GameLogic.checkForWin(player, button, gameArray)) {
+					gameLog.getItems().add("This is a win");
+					return;
+				}
 				// End Logic
 				button.setDisable(true);
 
@@ -131,6 +143,7 @@ public class JavaFXTemplate extends Application {
 				moves.push(button);
 			}
 		};
+
 
 		reverseHandler = new EventHandler<ActionEvent>() {
 			@Override

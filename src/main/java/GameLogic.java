@@ -21,4 +21,85 @@ public class GameLogic {
         }
     }
 
+    public static boolean checkForWin(int player, GameButton button, GameButton[][] arr) {
+
+        int row = button.row;
+        int column = button.column;
+
+        int count = 0;
+        for (int i = row; i >=0; i--){
+            if (arr[i][column].player != player){
+                break;
+            }
+            else {
+                count += 1;
+            }
+            if (count == 4){
+                return true;
+            }
+        }
+
+        return false;
+
+
+
+        /*
+        for (int i = column; i >= 0; i--){
+            if (arr[i][row].player != button.player){
+                break;
+            }
+            else {
+                count += 1;
+            }
+
+            if (count == 4) {
+                return true;
+            }
+
+        }
+
+
+
+
+
+
+
+        for (int x = row; x < COLUMNS; x++) {
+
+            int count = 0;
+            for (int y = 0; y < ROWS; y++) {
+                if (arr[y][x].player == 1) {
+                    count += 1;
+                }
+                else {
+                    break;
+                }
+                if (count == 4) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        return  false;
+
+
+        int count = 0;
+        if (arr[button.row][button.column].player != 0){
+            return;
+        }
+        else{
+            count +=1;
+        }
+        return false;
+
+        */
+    }
+
+
+    //x  x x  x
+    //easier way
+    // check from only last user input button
+
 }

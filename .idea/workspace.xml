@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e5ce5abf-2226-4035-b1cd-d50602129842" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
