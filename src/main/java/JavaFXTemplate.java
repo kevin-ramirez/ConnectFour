@@ -148,7 +148,7 @@ public class JavaFXTemplate extends Application {
 					if (buttonPresses == 42) {
 						gameLog.getItems().add("Tie game");
 					} else {
-						gameLog.getItems().add("This is a win");
+						gameLog.getItems().add(whichPlayer.getText() + " WON!");
 					}
 					pause.play();
 					pause.setOnFinished(e -> {

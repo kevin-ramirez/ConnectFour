@@ -20,6 +20,32 @@ class MyTest {
 
 	would make test to assert false when moves are placed above squares where there is no button that is owned by
 	player one ot two.
+
+	checkForWinTest
+    This method returns true or false based on which checkwin method there is. There are 3 checkwin methods we are dealing with:
+    vertical method, horizontal method and diagonal method. Again, the method is a boolean method, and it loops through the
+    gameboard array in a different way based upon which gamewin method we are searching for.
+
+    This is the toughest method of the program to test. The reason for this is because there are many edge cases we have initially
+    not thought of. These include checking corner edge cases to make sure out looping is not out of bounds, thus
+    we would make test to assert true when the buttons would make connect 4 in the 3 following ways:
+
+    Assert true if the last connect 4 pattern is of vertical shape thus all the 3 buttons on the bottom of it would
+    be highlighted to make sure the winner is announced and gameplay ends.
+
+    Assert true if the last connect 4 patter is of horizontal shape either going from left to right or right to left and
+    all of 3 buttons either to the left or to the right of the last button clicked would be highlighted and gameplay would end.
+
+    Assert true if the last connect 4 patter is of diagonal shape either going in SW, SE, NE or NW direction depending upon
+    where the last winner button was clicked. The 4 connect buttons would be highlighted to display the winner and end the
+    gameplay scene.
+
+    On the other hand for the assert false patterns we would look for different edge cases where the checkwin method would fail.
+    These involve diagonal method going out of bounds due to our constructed for loop. As looping would go out of bounds
+    assert false would be returned.
+
+    Assert false would also appear on many incomplete connect 4 cases such as only having 3,2,or 1 button of the same color,
+    thus not completing the requirement and returning false.
 	 */
 
 	GameButton[][] gameArray = new GameButton[ROWS][COLUMNS];
@@ -42,5 +68,12 @@ class MyTest {
 		gameArray[5][0].player = 1;
 		assertTrue(GameLogic.determineValidMove(button, gameArray), "Move should be valid");
 	}
+
+//	@Test
+//	void checkforWn() {
+//		int player = 0;
+//		GameButton button = new GameButton(5, 1);
+//		assertTrue(GameLogic.checkForWin(player, button, gameArray), "This is a win");
+//	}
 
 }
