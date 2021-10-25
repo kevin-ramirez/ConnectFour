@@ -7,11 +7,19 @@
     <list default="true" id="e5ce5abf-2226-4035-b1cd-d50602129842" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaFXTemplate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaFXTemplate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaFXTemplate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,12 +61,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

@@ -1,3 +1,4 @@
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -13,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.Stack;
 
@@ -30,13 +32,14 @@ public class JavaFXTemplate extends Application {
 	private int buttonPresses;
 	private Button startGameBtn, exitGameBtn;
 	private EventHandler<ActionEvent> closeHandler, gameButtonHandler, reverseHandler,
-			orgThemeHandler, themeOneHandler, themeTwoHandler, howToPlayHandler, newGameHandler;
+			orgThemeHandler, themeOneHandler, themeTwoHandler, howToPlayHandler, newGameHandler, endGameHandler;
 	private GridPane gameBoard;
 	private BorderPane gamePane;
 	private Text whichPlayer;
 	private ListView<String> gameLog;
 	private GameButton [][] gameArray = new GameButton[ROWS][COLUMNS];
 	private Stack<GameButton> moves = new Stack<>();
+	private PauseTransition pause = new PauseTransition(Duration.seconds(4));
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -103,6 +106,17 @@ public class JavaFXTemplate extends Application {
 			}
 		};
 
+		endGameHandler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				GameLogic.enableAll(gameArray);
+				buttonPresses = 0;
+				moves.clear();
+				gamePane = new BorderPane();
+				primaryStage.setScene(gamePlayScreen());
+			}
+		};
+
 		gameButtonHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent actionEvent) {
@@ -114,6 +128,12 @@ public class JavaFXTemplate extends Application {
 					gameLog.getItems().add("That was an invalid move. Try again");
 					return;
 				}
+				button.setDisable(true);
+
+				// Edits the button on the board to the player that pressed it
+				gameLog.getItems().add(whichPlayer.getText() + " placed a piece at cords: " + button.row + ", " + button.column);
+				buttonPresses++;
+
 				// Check for a win
 				int player;
 				if (whichPlayer.getText().equals("Player One")) {
@@ -123,21 +143,21 @@ public class JavaFXTemplate extends Application {
 					player = 2;
 				}
 
-				if (GameLogic.checkForWin(player, button, gameArray)) {
-					gameLog.getItems().add("This is a win");
+				if (GameLogic.checkForWin(player, button, gameArray) || buttonPresses == 42) {
+					GameLogic.disableAll(gameArray);
+					if (buttonPresses == 42) {
+						gameLog.getItems().add("Tie game");
+					} else {
+						gameLog.getItems().add("This is a win");
+					}
+					pause.play();
+					pause.setOnFinished(e -> {
+						primaryStage.setScene(winScreen(whichPlayer.getText(), buttonPresses));
+						primaryStage.show();
+					});
 					return;
 				}
 				// End Logic
-				button.setDisable(true);
-
-				// Edits the button on the board to the player that pressed it
-				gameLog.getItems().add(whichPlayer.getText() + " placed a piece at cords: " + button.row + ", " + button.column);
-				buttonPresses++;
-
-				if (buttonPresses == 42) {
-					primaryStage.setScene(winScreen(whichPlayer.getText(), buttonPresses));
-					primaryStage.show();
-				}
 
 				if (whichPlayer.getText().equals("Player One")) {
 					button.player = 1;
@@ -197,21 +217,25 @@ public class JavaFXTemplate extends Application {
 		BorderPane pane = new BorderPane();
 		Button buttonAgain = new Button();
 		buttonAgain.setText("Play again");
+		buttonAgain.setOnAction(endGameHandler);
 		Button exit = new Button();
 		exit.setText("Close game");
 		exit.setOnAction(closeHandler);
 		VBox vbox = new VBox();
 		vbox.setAlignment(Pos.CENTER);
-		Text text = new Text();
+		TextField text = new TextField();
+		text.setEditable(false);
+		text.setAlignment(Pos.CENTER);
 		vbox.getChildren().addAll(text, buttonAgain, exit);
 		if (buttonPresses == 42) {
 			text.setText("Tie Game!");
+			pane.setStyle("-fx-background-image: url(img1.jpg) ");
 		} else {
+			pane.setStyle("-fx-background-image: url(img4.jpg) ");
 			text.setText(player + " WON!");
 		}
 		pane.setTop(text);
 		pane.setCenter(vbox);
-		pane.setStyle("-fx-background-image: url(img4.jpg) ");
 		return new Scene(pane, 500, 500);
 	}
 
