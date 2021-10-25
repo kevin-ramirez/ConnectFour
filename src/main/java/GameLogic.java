@@ -26,8 +26,9 @@ public class GameLogic {
         int row = button.row;
         int column = button.column;
 
-        int count = 0;
-        for (int i = row; i >=0; i--){
+        int count = 1;
+        //Check vertical
+        for (int i = row + 1; i < ROWS; i++){
             if (arr[i][column].player != player){
                 break;
             }
@@ -39,62 +40,112 @@ public class GameLogic {
             }
         }
 
-        return false;
-
-
-
-        /*
-        for (int i = column; i >= 0; i--){
-            if (arr[i][row].player != button.player){
+        //Check horizontal
+        count = 1;
+        for (int i = column-1; i >=0; i--){
+            if (arr[row][i].player != player){
                 break;
             }
             else {
                 count += 1;
             }
-
-            if (count == 4) {
+            if (count == 4){
                 return true;
             }
-
         }
 
+        for (int i = column+1; i < COLUMNS; i++){
+            if (arr[row][i].player != player){
+                break;
+            }
+            else {
+                count += 1;
+            }
+            if (count == 4){
+                return true;
+            }
+        }
 
+        //Check diagonal
+        //Going SW
 
+        count = 1;
 
-
-
-
-        for (int x = row; x < COLUMNS; x++) {
-
-            int count = 0;
-            for (int y = 0; y < ROWS; y++) {
-                if (arr[y][x].player == 1) {
-                    count += 1;
+        outerloop1:
+        for (int i = row + 1; i < ROWS; i++){
+            for (int j = column - 1; j >= 0; j--){
+                if (arr[i][j].player != player){
+                    break outerloop1;
                 }
                 else {
-                    break;
+                    count += 1;
                 }
                 if (count == 4) {
                     return true;
                 }
+                i++;
+            }
+        }
+
+        //Going NE
+        outerloop2:
+        for (int i = row - 1; i >= 0; i--){
+            for (int j = column + 1; j < COLUMNS; j++){
+                if (arr[i][j].player != player){
+                    break outerloop2;
+                }
+                else {
+                    count += 1;
+                }
+                if (count == 4) {
+                    return true;
+                }
+                i++;
+            }
+        }
+
+        count = 1;
+
+        //SE
+        outerloop3:
+        for (int i = row + 1; i < ROWS; i++){
+            for (int j = column + 1; j < COLUMNS; j++){
+                if (arr[i][j].player != player){
+                    break outerloop3;
+                }
+                else {
+                    count += 1;
+                }
+                if (count == 4) {
+                    return true;
+                }
+                i++;
             }
 
-            return false;
         }
 
-        return  false;
 
 
-        int count = 0;
-        if (arr[button.row][button.column].player != 0){
-            return;
+        //NW
+        outerloop4:
+        for (int i = row - 1; i >= 0; i--){
+            for (int j = column - 1; j >= 0; j--){
+                if (arr[i][j].player != player){
+                    break outerloop4;
+                }
+                else {
+                    count += 1;
+                }
+                if (count == 4) {
+                    return true;
+                }
+                i++;
+            }
         }
-        else{
-            count +=1;
-        }
+
         return false;
 
-        */
+
     }
 
 
