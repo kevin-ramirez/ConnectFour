@@ -144,7 +144,7 @@ public class JavaFXTemplate extends Application {
 				}
 
 				if (GameLogic.checkForWin(player, button, gameArray) || buttonPresses == 42) {
-					GameLogic.disableAll(gameArray);
+					//GameLogic.disableAll(gameArray);
 					if (buttonPresses == 42) {
 						gameLog.getItems().add("Tie game");
 					} else {

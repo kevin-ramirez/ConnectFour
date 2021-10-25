@@ -93,85 +93,113 @@ public class GameLogic {
                 return true;
             }
         }
-//
-//        //Check diagonal
-//        //Going SW
-//
-//        count = 1;
-//
-//        outerloop1:
-//        for (int i = row + 1; i < ROWS; i++){
-//            for (int j = column - 1; j >= 0; j--){
-//                if (arr[i][j].player != player){
-//                    break outerloop1;
-//                }
-//                else {
-//                    count += 1;
-//                }
-//                if (count == 4) {
-//                    return true;
-//                }
-//                i++;
-//            }
-//        }
-//
-//        //Going NE
-//        outerloop2:
-//        for (int i = row - 1; i >= 0; i--){
-//            for (int j = column + 1; j < COLUMNS; j++){
-//                if (arr[i][j].player != player){
-//                    break outerloop2;
-//                }
-//                else {
-//                    count += 1;
-//                }
-//                if (count == 4) {
-//                    return true;
-//                }
-//                i++;
-//            }
-//        }
-//
-//        count = 1;
-//
-//        //SE
-//        outerloop3:
-//        for (int i = row + 1; i < ROWS; i++){
-//            for (int j = column + 1; j < COLUMNS; j++){
-//                if (arr[i][j].player != player){
-//                    break outerloop3;
-//                }
-//                else {
-//                    count += 1;
-//                }
-//                if (count == 4) {
-//                    return true;
-//                }
-//                i++;
-//            }
-//
-//        }
-//
-//
-//
-//        //NW
-//        outerloop4:
-//        for (int i = row - 1; i >= 0; i--){
-//            for (int j = column - 1; j >= 0; j--){
-//                if (arr[i][j].player != player){
-//                    break outerloop4;
-//                }
-//                else {
-//                    count += 1;
-//                }
-//                if (count == 4) {
-//                    return true;
-//                }
-//                i++;
-//            }
-//        }
+
+        //Check diagonal
+        //Going SW
+
+        count = 1;
+
+        outerloop1:
+        for (int i = row + 1; i < ROWS; i++){
+            for (int j = column - 1; j >= 0; j--){
+                if (arr[i][j].player != player){
+                    break outerloop1;
+                }
+                else {
+                    count += 1;
+                }
+                if (count == 4) {
+                    arr[i][j].setStyle("-fx-background-color: green");
+                    arr[i-1][j+1].setStyle("-fx-background-color: green");
+                    arr[i-2][j+2].setStyle("-fx-background-color: green");
+                    arr[i-3][j+3].setStyle("-fx-background-color: green");
+                    return true;
+                }
+                i++;
+
+                if( i >= ROWS){
+                    break outerloop1;
+                }
+            }
+        }
+
+        //Going NE
+        outerloop2:
+        for (int i = row - 1; i >= 0; i--){
+            for (int j = column + 1; j < COLUMNS; j++){
+                if (arr[i][j].player != player){
+                    break outerloop2;
+                }
+                else {
+                    count += 1;
+                }
+                if (count == 4) {
+                    arr[i][j].setStyle("-fx-background-color: blue");
+                    arr[i+1][j-1].setStyle("-fx-background-color: blue");
+                    arr[i+2][j-2].setStyle("-fx-background-color: blue");
+                    arr[i+3][j-3].setStyle("-fx-background-color: blue");
+                    return true;
+                }
+                i--;
+                if( i < 0){
+                    break outerloop2;
+                }
+
+            }
+        }
+
+        count = 1;
+
+        //SE
+        outerloop3:
+        for (int i = row + 1; i < ROWS; i++){
+            for (int j = column + 1; j < COLUMNS; j++){
+                if (arr[i][j].player != player){
+                    break outerloop3;
+                }
+                else {
+                    count += 1;
+                }
+                if (count == 4) {
+                    arr[i][j].setStyle("-fx-background-color: red");
+                    arr[i-1][j-1].setStyle("-fx-background-color: red");
+                    arr[i-2][j-2].setStyle("-fx-background-color: red");
+                    arr[i-3][j-3].setStyle("-fx-background-color: red");
+                    return true;
+                }
+                i++;
+                if( i >= ROWS){
+                    break outerloop3;
+                }
+            }
+        }
+
+        //NW
+        outerloop4:
+        for (int i = row - 1; i >= 0; i--){
+            for (int j = column - 1; j >= 0; j--){
+                if (arr[i][j].player != player){
+                    break outerloop4;
+                }
+                else {
+                    count += 1;
+                }
+                if (count == 4) {
+                    arr[i][j].setStyle("-fx-background-color: pink");
+                    arr[i+1][j+1].setStyle("-fx-background-color: pink");
+                    arr[i+2][j+2].setStyle("-fx-background-color: pink");
+                    arr[i+3][j+3].setStyle("-fx-background-color: pink");
+                    return true;
+                }
+                i--;
+                if( i < 0){
+                    break outerloop4;
+                }
+            }
+        }
 
         return false;
+
     }
 
 
